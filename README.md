@@ -1,12 +1,12 @@
-# 100-Days-Of-LLD
+# Low Level Design Projects
 [![Build Status](https://travis-ci.com/agarwalsarthak121/100-days-of-code.svg?branch=main)](https://travis-ci.com/agarwalsarthak121/100-days-of-code)
 
 # Overview
 
-|Day| Project |Description| Language| Status|
+|S.No.| Project |Description| Language| Status|
 |--|--|--|--|--|
 | 1 | Producer Consumer Problem| Java Multithreading Synchronization Problem| Java| Done|
-| 2 | Cab Management System|  Spring Boot Rest API based Cab booking system|  Java| In Progress|
+| 2 | Cab Management System|  Spring Boot Rest API based Cab booking system| Java| In Progress|
 | 3 | |  |  |
 | 4 | |  |  |
 | 5 | |  |  |
