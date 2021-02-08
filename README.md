@@ -6,7 +6,7 @@
 
 |Day| Project |Description| Language| Status|
 |--|--|--|--|--|
-| 1 | Producer Consumer Problem| Java Multithreading Synchronization Problem| Done|
+| 1 | Producer Consumer Problem| Java Multithreading Synchronization Problem| Java| Done|
 | 2 | |  |  |
 | 3 | |  |  |
 | 4 | |  |  |
