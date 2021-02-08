@@ -8,28 +8,30 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class ProducerConsumerUsingThreadPools {
 	public static void main(String[] args) throws InterruptedException {
 			
-			final BlockingQueue<Integer> list = new LinkedBlockingQueue<Integer>(2);
-			ExecutorService executor = Executors.newFixedThreadPool(2);
+		final BlockingQueue<Integer> list = new LinkedBlockingQueue<Integer>(2);
+		
+		//Creating Thread Pool of Size 2
+		ExecutorService executor = Executors.newFixedThreadPool(2);
+		
+		Runnable producer = new Runnable() {
 			
-			Runnable producer = new Runnable() {
-				
-				@Override
-				public void run() {
-					int value = 0;
-					try
-					{
-						while(true) {
-							list.add(value);
-							System.out.println("Value Produced : " + value);
-							value++;
-							Thread.sleep(1000);
-						}
-					}
-					catch(InterruptedException e) {
-						
+			@Override
+			public void run() {
+				int value = 0;
+				try
+				{
+					while(true) {
+						list.add(value);
+						System.out.println("Value Produced : " + value);
+						value++;
+						Thread.sleep(1000);
 					}
 				}
-			};
+				catch(InterruptedException e) {
+					
+				}
+			}
+		};
 			
 			
 		Runnable consumer = new Runnable() {
@@ -50,9 +52,11 @@ public class ProducerConsumerUsingThreadPools {
 			}
 		};
 		
+		//Submit and execute producer and consumer
 		executor.submit(producer);
 		executor.submit(consumer);
 		
+		//Shutdown executor after threads exit
 		executor.shutdown();
 	}
 }

@@ -6,9 +6,10 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class ProducerConsumerUsingBlockingQueue {
 	public static void main(String[] args) throws InterruptedException {
 		
+		//Bounded Blocking Queue of capacity 2
 		final BlockingQueue<Integer> list = new LinkedBlockingQueue<Integer>(2);
 		
-		Thread t1 = new Thread(new Runnable() {
+		Thread producer = new Thread(new Runnable() {
 			
 			@Override
 			public void run() {
@@ -29,7 +30,7 @@ public class ProducerConsumerUsingBlockingQueue {
 		});
 		
 		
-	Thread t2 = new Thread(new Runnable() {
+	Thread consumer = new Thread(new Runnable() {
 		
 		@Override
 		public void run() {
@@ -47,10 +48,10 @@ public class ProducerConsumerUsingBlockingQueue {
 		}
 	});
 	
-	t1.start();
-	t2.start();
+	producer.start();
+	consumer.start();
 	
-	t1.join();
-	t2.join();
+	producer.join();
+	consumer.join();
 }
 }
