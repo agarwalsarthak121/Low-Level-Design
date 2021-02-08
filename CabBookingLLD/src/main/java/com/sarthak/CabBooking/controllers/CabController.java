@@ -4,6 +4,7 @@ import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +18,7 @@ public class CabController {
 	@Autowired
 	private CabManager cabManager;
 	
-	@GetMapping("/register")
+	@PostMapping("cab/register")
 	public ResponseEntity registerCab(@RequestParam(name = "name") String name, @RequestParam(name = "city") String city) throws Exception
 	{
 		Cab cab = new Cab();
@@ -28,5 +29,10 @@ public class CabController {
 		cabManager.addCab(cab);
 				
 		return ResponseEntity.ok("Cab Registered");
+	}
+	
+	@GetMapping("/cab/{cabId}")
+	public Cab getCabInfoById(@PathVariable("cabId") int id) throws Exception {
+		return cabManager.getCabById(id);
 	}
 }
