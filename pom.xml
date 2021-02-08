@@ -10,5 +10,6 @@
  
   <modules>
     <module>ProducerConsumer</module>
+    <module>CabBookingLLD</module>
   </modules>
 </project>
