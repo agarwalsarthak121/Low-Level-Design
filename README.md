@@ -1,7 +1,5 @@
 # 100-Days-Of-LLD
 [![Build Status](https://travis-ci.com/agarwalsarthak121/100-days-of-code.svg?branch=main)](https://travis-ci.com/agarwalsarthak121/100-days-of-code)
-100 Days Of Low Level Design
-
 
 # Overview
 
