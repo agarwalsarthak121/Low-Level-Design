@@ -51,7 +51,7 @@ public class CabManager {
 	}
 	
 	public Cab getCabById(int id) throws Exception {
-		Cab cab = new Cab();
+		Cab cab = null;
 		for(Map.Entry<String,List<Cab>> map : cabRepo.entrySet()) {
 			List<Cab> cabList = map.getValue();
 			cab = cabList.stream().filter(cabItem -> cabItem.getId() == id).findFirst().get();
