@@ -11,4 +11,14 @@ public class Cab {
 	private String name;
 	private String city;
 	private boolean isAvailable;
+	
+	@Override
+	  public String toString() {
+	    return "Cab{" +
+	        "id='" + id + '\'' +
+	        ", driverName='" + name + '\'' +
+	        ", currentLocation=" + city +
+	        ", isAvailable=" + isAvailable +
+	        '}';
+	  }
 }

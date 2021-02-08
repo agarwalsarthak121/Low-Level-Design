@@ -11,9 +11,13 @@ import com.sarthak.CabBooking.model.Cab;
 
 @Service
 public class CabManager {
+	private int autoIncrementId = 1;
 	Map<String, List<Cab>> cabRepo = new HashMap<>();
 	
 	public void addCab(Cab cab) {
+		
+		cab.setId(autoIncrementId++);
+		
 		if(cabRepo.containsKey(cab.getCity()))
 			cabRepo.get(cab.getCity()).add(cab);
 		else
@@ -46,7 +50,7 @@ public class CabManager {
 		
 	}
 	
-	private Cab getCabById(int id) throws Exception {
+	public Cab getCabById(int id) throws Exception {
 		Cab cab = new Cab();
 		for(Map.Entry<String,List<Cab>> map : cabRepo.entrySet()) {
 			List<Cab> cabList = map.getValue();
