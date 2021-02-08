@@ -1,5 +1,5 @@
-# 100-Days-Of-Code
-100 Days Of Code
+# 100-Days-Of-LLD
+100 Days Of Low Level Design
 
 
 # Overview
