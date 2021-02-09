@@ -1,5 +1,5 @@
 # Low Level Design Projects
-[![Build Status](https://travis-ci.com/agarwalsarthak121/100-days-of-code.svg?branch=main)](https://travis-ci.com/agarwalsarthak121/100-days-of-code)
+[![Build Status](https://travis-ci.com/agarwalsarthak121/Low-Level-Design.svg?branch=main)](https://travis-ci.com/agarwalsarthak121/Low-Level-Design)
 
 # Overview
 
