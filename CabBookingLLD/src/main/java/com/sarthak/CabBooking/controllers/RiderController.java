@@ -42,7 +42,7 @@ public class RiderController {
 		return riderManager.getRiderById(id);
 	}
 	
-	@PostMapping("/rider/{id}/book-cab")
+	@PostMapping("/rider/{id}/book")
 	public Trip bookCab(@PathVariable("id") int id, @RequestParam("source") String source, @RequestParam("destination") String destination) throws Exception {
 		
 		Rider rider = riderManager.getRiderById(id);
@@ -54,18 +54,6 @@ public class RiderController {
 		cabManager.updateCabLocation(cab, destination);
 		
 		return trip;
-	}
-	
-	@PostMapping("/rider/end-trip/{id}")
-	public ResponseEntity endTrip(@PathVariable("id") int tripId) throws Exception {
-		Trip trip = tripManager.getTripById(tripId);
-		
-		tripManager.endTrip(trip);
-		
-		cabManager.updateAvailability(trip.getCab(), true);
-		
-		return ResponseEntity.ok("Trip Sucessfully Completed");
-		
 	}
 	
 }
