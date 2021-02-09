@@ -37,17 +37,12 @@ public class CabManager {
 		throw new Exception("Cab not available for the city");
 	}
 	
-	public void updateAvailability(int cabId, boolean isAvailable) throws Exception {
-		Cab cab = getCabById(cabId);
-		
+	public void updateAvailability(Cab cab, boolean isAvailable) throws Exception {
 		cab.setAvailable(isAvailable);
 	}
 	
-	public void updateCabLocation(int cabId, String city) throws Exception {
-		Cab cab = getCabById(cabId);
-		
+	public void updateCabLocation(Cab cab, String city) throws Exception {
 		cab.setCity(city);
-		
 	}
 	
 	public Cab getCabById(int id) throws Exception {
