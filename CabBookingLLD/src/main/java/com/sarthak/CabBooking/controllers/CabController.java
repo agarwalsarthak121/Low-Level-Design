@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sarthak.CabBooking.exception.CabNotFoundException;
 import com.sarthak.CabBooking.manager.CabManager;
 import com.sarthak.CabBooking.model.Cab;
 
@@ -18,7 +19,7 @@ public class CabController {
 	private CabManager cabManager;
 	
 	@PostMapping("cab/register")
-	public ResponseEntity registerCab(@RequestParam(name = "name") String name, @RequestParam(name = "city") String city) throws Exception
+	public ResponseEntity<String> registerCab(@RequestParam(name = "name") String name, @RequestParam(name = "city") String city) throws Exception
 	{
 		Cab cab = new Cab();
 		cab.setCity(city);
@@ -31,7 +32,7 @@ public class CabController {
 	}
 	
 	@GetMapping("/cab/{cabId}")
-	public Cab getCabInfoById(@PathVariable("cabId") int id) throws Exception {
-		return cabManager.getCabById(id);
+	public ResponseEntity<Cab> getCabInfoById(@PathVariable("cabId") int id) throws CabNotFoundException {
+		return ResponseEntity.ok(cabManager.getCabById(id));
 	}
 }

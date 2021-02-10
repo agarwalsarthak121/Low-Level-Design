@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.sarthak.CabBooking.exception.TripNotFoundException;
 import com.sarthak.CabBooking.model.Cab;
 import com.sarthak.CabBooking.model.Rider;
 import com.sarthak.CabBooking.model.Trip;
@@ -32,11 +33,11 @@ public class TripManager {
 		return trip;
 	}
 
-	public Trip getTripById(int id) throws Exception {
+	public Trip getTripById(int id) throws TripNotFoundException {
 		if(tripMap.containsKey(id))
 			return tripMap.get(id);
 		
-		throw new Exception("Trip not found");
+		throw new TripNotFoundException("Trip not found");
 	}
 	
 	public void endTrip(Trip trip) {

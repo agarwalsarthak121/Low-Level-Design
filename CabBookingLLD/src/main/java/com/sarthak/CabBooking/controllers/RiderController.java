@@ -1,6 +1,7 @@
 package com.sarthak.CabBooking.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sarthak.CabBooking.exception.CabNotAvailableException;
+import com.sarthak.CabBooking.exception.RiderNotFoundException;
 import com.sarthak.CabBooking.manager.CabManager;
 import com.sarthak.CabBooking.manager.RiderManager;
 import com.sarthak.CabBooking.manager.TripManager;
@@ -43,7 +46,7 @@ public class RiderController {
 	}
 	
 	@PostMapping("/rider/{id}/book")
-	public Trip bookCab(@PathVariable("id") int id, @RequestParam("source") String source, @RequestParam("destination") String destination) throws Exception {
+	public ResponseEntity<Trip> bookCab(@PathVariable("id") int id, @RequestParam("source") String source, @RequestParam("destination") String destination) throws CabNotAvailableException, RiderNotFoundException {
 		
 		Rider rider = riderManager.getRiderById(id);
 		Cab cab = cabManager.getFirstAvailableCab(source);
@@ -53,7 +56,7 @@ public class RiderController {
 		cabManager.updateAvailability(cab, false);
 		cabManager.updateCabLocation(cab, destination);
 		
-		return trip;
+		return new ResponseEntity<Trip>(trip, HttpStatus.OK);
 	}
 	
 }

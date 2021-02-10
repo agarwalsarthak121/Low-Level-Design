@@ -3,12 +3,14 @@ package com.sarthak.CabBooking.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.sarthak.CabBooking.exception.TripNotFoundException;
 import com.sarthak.CabBooking.manager.CabManager;
 import com.sarthak.CabBooking.manager.TripManager;
 import com.sarthak.CabBooking.model.Trip;
@@ -23,7 +25,7 @@ public class TripController {
 	private CabManager cabManager;
 
 	@PostMapping("/trip/{id}/end")
-	public ResponseEntity endTrip(@PathVariable("id") int tripId) throws Exception {
+	public ResponseEntity<String> endTrip(@PathVariable("id") int tripId) throws TripNotFoundException {
 		Trip trip = tripManager.getTripById(tripId);
 		
 		tripManager.endTrip(trip);
@@ -35,20 +37,20 @@ public class TripController {
 	}
 	
 	@GetMapping("/trip/{id}")
-	public Trip getTripInfo(@PathVariable("id") int tripId) throws Exception {
+	public ResponseEntity<Trip> getTripInfo(@PathVariable("id") int tripId) throws TripNotFoundException {
 		Trip trip = tripManager.getTripById(tripId);
 		
-		return trip;
+		return new ResponseEntity<Trip>(trip, HttpStatus.OK);
 	}
 	
 	@GetMapping("/trip/rider/{id}")
-	public List<Trip> getTripHistoryForRider(@PathVariable("id") int riderId){
-		return tripManager.getTripsByRider(riderId);
+	public ResponseEntity<List<Trip>> getTripHistoryForRider(@PathVariable("id") int riderId){
+		return new ResponseEntity<List<Trip>>(tripManager.getTripsByRider(riderId), HttpStatus.OK);
 	}
 	
 	@GetMapping("/trip/cab/{id}")
-	public List<Trip> getTripHistoryForCab(@PathVariable("id") int cabId){
-		return tripManager.getTripsByCab(cabId);
+	public ResponseEntity<List<Trip>> getTripHistoryForCab(@PathVariable("id") int cabId){
+		return new ResponseEntity<List<Trip>>(tripManager.getTripsByCab(cabId) ,HttpStatus.OK);
 	}
 	
 	

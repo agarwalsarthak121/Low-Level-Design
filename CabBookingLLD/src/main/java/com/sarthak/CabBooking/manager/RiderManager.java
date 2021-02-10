@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.sarthak.CabBooking.exception.RiderNotFoundException;
 import com.sarthak.CabBooking.model.Rider;
 
 @Service
@@ -13,11 +14,11 @@ public class RiderManager {
 	private int autoIncrementRiderId = 1;
 	private Map<Integer, Rider> riderMap = new HashMap<>();
 	
-	public Rider getRiderById(int id) throws Exception {
+	public Rider getRiderById(int id) throws RiderNotFoundException {
 		if(riderMap.containsKey(id))
 			return riderMap.get(id);
 		
-		throw new Exception("Rider not found");
+		throw new RiderNotFoundException("Rider not found");
 	}
 	
 	public void addRider(Rider rider) {
