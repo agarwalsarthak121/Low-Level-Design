@@ -11,5 +11,7 @@
   <modules>
     <module>ProducerConsumer</module>
     <module>CabBookingLLD</module>
+    <module>HashMap</module>
+    <module>ParkingLot</module>
   </modules>
 </project>
