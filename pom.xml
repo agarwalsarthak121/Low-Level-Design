@@ -13,5 +13,6 @@
     <module>CabBookingLLD</module>
     <module>HashMap</module>
     <module>ParkingLot</module>
+    <module>LRUCache</module>
   </modules>
 </project>
