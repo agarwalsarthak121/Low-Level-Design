@@ -9,7 +9,7 @@
 | 2 | Cab Management System|  Spring Boot Rest API based Cab booking system| Java| Done|
 | 3 | HashMap Implementation|  Design your own hashmap|  Java|  In Progress|
 | 4 | Parking Lot Design|  Implement a multi level parking lot for parking different types of vehicles|  Java|  In Progress|
-| 5 | |  |  |
+| 5 | LRU Cache|  Implement LRU using doubly linked list and hashmap |  Java| Done|
 | 6 | |  |  |
 | 7 | |  |  |
 | 8 | |  |  |
