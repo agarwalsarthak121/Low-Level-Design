@@ -10,7 +10,7 @@
 | 3 | HashMap Implementation|  Design your own hashmap|  Java|  In Progress|
 | 4 | Parking Lot Design|  Implement a multi level parking lot for parking different types of vehicles|  Java|  In Progress|
 | 5 | LRU Cache|  Implement LRU using doubly linked list and hashmap |  Java| Done|
-| 6 | |  |  |
+| 6 | Print Even Odd | Use two threads to print even odd numbers in sequence | Java | Done |
 | 7 | |  |  |
 | 8 | |  |  |
 | 9 | |  |  |
