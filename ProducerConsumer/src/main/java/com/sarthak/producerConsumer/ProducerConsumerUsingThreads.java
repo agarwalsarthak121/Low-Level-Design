@@ -34,8 +34,7 @@ public class ProducerConsumerUsingThreads {
 				try
 				{
 					while(true) {
-						int value;
-						value = buffer.poll();
+						int value = buffer.poll();
 						System.out.println("Value Consumed : " + value);
 						Thread.sleep(1000);
 					}

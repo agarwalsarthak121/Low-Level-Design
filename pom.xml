@@ -14,5 +14,6 @@
     <module>HashMap</module>
     <module>ParkingLot</module>
     <module>LRUCache</module>
+    <module>EvenOddThreads</module>
   </modules>
 </project>
