@@ -8,22 +8,22 @@ public class CacheDriver
 {
     public static void main( String[] args )
     {
-        LRUCache cache = new LRUCache();
+        LRUCache cache = new LRUCache(5);
         
         //Order a
-        cache.insertValue("a", 1);
+        cache.put("a", 1);
         
         //Order b -> a
-        cache.insertValue("b", 2);
+        cache.put("b", 2);
         
         //Order c -> b -> a
-        cache.insertValue("c", 3);
+        cache.put("c", 3);
         
         //Order d -> c -> b -> a
-        cache.insertValue("d", 4);
+        cache.put("d", 4);
         
         // Order e -> d -> c -> b -> a
-        cache.insertValue("e", 5);
+        cache.put("e", 5);
         
         //Order a -> e -> d -> c -> b //Transfer a to top
         cache.getValue("a");
@@ -32,13 +32,13 @@ public class CacheDriver
         cache.getValue("b");
         
         //Order f -> b -> a -> e -> d //Remove c and add f to top
-        cache.insertValue("f", 6);
+        cache.put("f", 6);
         
         //Order d -> f -> b -> a -> e //Transfer d to top and update value
-        cache.insertValue("d", 2);
+        cache.put("d", 2);
         
         //Order g -> d -> f -> b -> a //Remove e and add g to top
-        cache.insertValue("g", 8);
+        cache.put("g", 8);
         
         System.out.println(cache.getValue("f"));
     }

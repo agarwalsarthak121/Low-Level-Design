@@ -15,5 +15,6 @@
     <module>ParkingLot</module>
     <module>LRUCache</module>
     <module>EvenOddThreads</module>
+    <module>Diner-Philosopher</module>
   </modules>
 </project>

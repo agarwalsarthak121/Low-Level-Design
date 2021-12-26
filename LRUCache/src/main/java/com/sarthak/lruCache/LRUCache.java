@@ -8,15 +8,16 @@ public class LRUCache {
 	private Map<String,Node> keyValueStore;
 	private Node start;
 	private Node end;
-	private int capacity = 5;
+	private int capacity;
 	private int size;
 	
-	public LRUCache() {
+	public LRUCache(int capacity) {
 		keyValueStore = new HashMap<>();
 		size = 0;
+		this.capacity = capacity;
 	}
 	
-	public void insertValue(String key, int value) {
+	public void put(String key, int value) {
 		
 		if(keyValueStore.containsKey(key))
 		{
@@ -29,7 +30,7 @@ public class LRUCache {
 		{
 			if(size == capacity)
 			{
-				keyValueStore.remove(end.getKey());
+				keyValueStore.remove(end.key);
 				removeNode(end);
 				addToTop(key, value);
 			}
@@ -47,16 +48,16 @@ public class LRUCache {
 	public Integer getValue(String key) {
 		if(keyValueStore.containsKey(key)) {
 			removeNode(keyValueStore.get(key));
-			addToTop(key, keyValueStore.get(key).getValue());
-			return keyValueStore.get(key).getValue();
+			addToTop(key, keyValueStore.get(key).value);
+			return keyValueStore.get(key).value;
 		}
 		
 		return null;
 	}
 	
 	private void removeNode(Node node) {
-		Node prev = node.getPrev();
-		Node next = node.getNext();
+		Node prev = node.prev;
+		Node next = node.next;
 		
 		if(prev == null)
 		{
@@ -64,25 +65,25 @@ public class LRUCache {
 			if(next == null)
 				end = null;
 			else
-				next.setPrev(null);
+				next.prev = null;
 		}
 		else
 		{
-			prev.setNext(next);
+			prev.next = next;
 			if(next == null)
 				end = prev;
 			else
-				next.setPrev(prev);
+				next.prev = prev;
 		}
 	}
 	
 	private void addToTop(String key, int value) {
 		Node node = new Node(key, value);
-		node.setNext(start);
-		node.setPrev(null);
+		node.next = start;
+		node.prev = null;
 		
 		if(start != null)
-			start.setPrev(node);
+			start.prev = node;
 		
 		start = node;
 		

@@ -7,10 +7,10 @@ import lombok.Setter;
 @Setter
 public class Node {
 	
-	private String key;
-	private int value;
-	private Node prev;
-	private Node next;
+	String key;
+	int value;
+	Node prev;
+	Node next;
 	
 	public Node(String key, int value) {
 		this.key = key;
